@@ -6,6 +6,8 @@ import {
   Platform,
 } from 'react-native';
 
+import { RNBackgroundTimer, NativeEmitter} from './emitter';
+
 class BackgroundTimer {
   constructor() {
     this.uniqueId = 0;
@@ -14,18 +16,18 @@ class BackgroundTimer {
     // const { RNBackgroundTimer } = NativeModules;
     // this.Emitter = new NativeEventEmitter(RNBackgroundTimer);
 
-    // this.Emitter.addListener('backgroundTimer.timeout', (id) => {
-    //   if (this.callbacks[id]) {
-    //     const callbackById = this.callbacks[id];
-    //     const { callback } = callbackById;
-    //     if (!this.callbacks[id].interval) {
-    //       delete this.callbacks[id];
-    //     } else {
-    //       RNBackgroundTimer.setTimeout(id, this.callbacks[id].timeout);
-    //     }
-    //     callback();
-    //   }
-    // });
+    NativeEmitter.addListener('backgroundTimer.timeout', (id) => {
+      if (this.callbacks[id]) {
+        const callbackById = this.callbacks[id];
+        const { callback } = callbackById;
+        if (!this.callbacks[id].interval) {
+          delete this.callbacks[id];
+        } else {
+          RNBackgroundTimer.setTimeout(id, this.callbacks[id].timeout);
+        }
+        callback();
+      }
+    });
   }
 
   // Original API
