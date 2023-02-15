@@ -1,0 +1,54 @@
+{
+  "name": "react-native-background-timer",
+  "version": "2.4.1",
+  "description": "Emit event periodically (even when app is in the background)",
+  "keywords": [
+    "react-native",
+    "background",
+    "timer",
+    "android",
+    "ios"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "eslint": "eslint *.js",
+    "eslint:fix": "yarn eslint --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ocetnik/react-native-background-timer.git"
+  },
+  "author": "David Ocetnik",
+  "license": "MIT",
+  "peerDependencies": {
+    "react-native": ">=0.47.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.7",
+    "eslint": "^8.31.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.11",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.2",
+    "lint-staged": "^13.1.0",
+    "prettier": "^2.8.1",
+    "react": "17.0.2",
+    "react-native": "^0.68.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
+  }
+}
